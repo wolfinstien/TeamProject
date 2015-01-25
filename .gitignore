@@ -1,0 +1,10 @@
+# =============== #
+# Unity generated #
+# =============== #
+# Bloat files that will make uploads longer #
+# We only need to worry about the Assets and ProjectSettings directories #
+Temp/
+Obj/
+UnityGenerated/
+Library/
+Assets/AssetStoreTools*
