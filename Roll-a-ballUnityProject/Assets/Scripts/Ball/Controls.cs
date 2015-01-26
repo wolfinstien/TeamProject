@@ -39,25 +39,28 @@ public class Controls : MonoBehaviour
         /*
          * Check for jump
          */
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) 
             rigidbody.AddForce(new Vector3(0f, 3.25f, 0f), ForceMode.Impulse);
-        }
 
         #endif
 
         #if UNITY_ANDROID
 
-        Vector3 dir = Vector3.zero;
+        /*
+         * Move ball based on accelerometer values
+         */
+        Vector3 movement = new Vector3(Input.acceleration.x, 0f, Input.acceleration.y); //-y
 
-        dir.x = -Input.acceleration.y;
-        dir.z = Input.acceleration.x;
+        if (movement.sqrMagnitude > 1)
+            movement.Normalize();
+        
+        rigidbody.AddForce(movement * 15f);
 
-        if (dir.sqrMagnitude > 1)
-            dir.Normalize();
-
-        dir *= Time.deltaTime;
-
-        rigidbody.transform.Translate(dir * 10f);
+        /*
+         * Tap screen to jump
+         */
+        if (Input.GetMouseButtonDown(0))
+            rigidbody.AddForce(new Vector3(0f, 3.25f, 0f), ForceMode.Impulse);
 
         #endif
 	}
