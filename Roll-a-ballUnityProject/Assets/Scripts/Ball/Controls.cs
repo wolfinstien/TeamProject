@@ -14,7 +14,7 @@ public class Controls : MonoBehaviour
 	void Update () 
 	{
         
-        #if UNITY_STANDALONE_WIN
+        #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
 
         /* 
          * Check for player keyboard input and move ball accordingly
