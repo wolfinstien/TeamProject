@@ -1,13 +1,20 @@
 using UnityEngine;
 using System.Collections;
 
-public class Controls : MonoBehaviour 
-{
+public class Controls : MonoBehaviour {
 
-	// Use this for initialization
+    #region Fields
+
+    private const float FORCE = 120f;
+
+    #endregion
+
+    #region Functions
+
+    // Use this for initialization
 	void Start () 
 	{
-	
+        DontDestroyOnLoad(transform.gameObject);
 	}
 	
 	// Update is called once per frame
@@ -21,19 +28,19 @@ public class Controls : MonoBehaviour
          */
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 		{
-			rigidbody.AddForce(Vector3.forward*10);
+			rigidbody.AddForce(Vector3.forward * FORCE);
 		}
 		if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 		{
-			rigidbody.AddForce(Vector3.back*10);
+            rigidbody.AddForce(Vector3.back * FORCE);
 		}
 		if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.LeftArrow))
 		{
-			rigidbody.AddForce(Vector3.left*10);
+            rigidbody.AddForce(Vector3.left * FORCE);
 		}
 		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
-			rigidbody.AddForce(Vector3.right*10);
+            rigidbody.AddForce(Vector3.right * FORCE);
 		}
 
         /*
@@ -63,5 +70,7 @@ public class Controls : MonoBehaviour
             rigidbody.AddForce(new Vector3(0f, 3.25f, 0f), ForceMode.Impulse);
 
         #endif
-	}
+    }
+
+    #endregion
 }
