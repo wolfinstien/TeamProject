@@ -288,3 +288,4 @@ MonoBehaviour:
   Room23: {fileID: 192342, guid: 90419f2cc4713f849bdc15d69df71c1d, type: 2}
   Room24: {fileID: 150764, guid: 36059eda171907f4aab5c9dd1a8020f1, type: 2}
   Room25: {fileID: 144140, guid: 4cd2347bbf2a629498deac6b16656d40, type: 2}
+  m_switcherA: {fileID: 0}
