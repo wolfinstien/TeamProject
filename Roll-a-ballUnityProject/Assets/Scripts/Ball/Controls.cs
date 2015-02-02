@@ -43,12 +43,6 @@ public class Controls : MonoBehaviour {
             rigidbody.AddForce(Vector3.right * FORCE);
 		}
 
-        /*
-         * Check for jump
-         */
-        if (Input.GetKeyDown(KeyCode.Space)) 
-            rigidbody.AddForce(new Vector3(0f, 3.25f, 0f), ForceMode.Impulse);
-
         #endif
 
         #if UNITY_ANDROID
@@ -62,12 +56,6 @@ public class Controls : MonoBehaviour {
             movement.Normalize();
         
         rigidbody.AddForce(movement * 15f);
-
-        /*
-         * Tap screen to jump
-         */
-        if (Input.GetMouseButtonDown(0))
-            rigidbody.AddForce(new Vector3(0f, 3.25f, 0f), ForceMode.Impulse);
 
         #endif
     }

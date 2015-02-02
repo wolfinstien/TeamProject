@@ -14,7 +14,7 @@ public class Wall : MonoBehaviour {
 	}
 
     void OnCollisionEnter(Collision other) {
-        if (other.gameObject.tag.Equals("Player")) 
+        if (other.gameObject.tag.Equals("Player"))
             this.audio.Play();
     }
 }

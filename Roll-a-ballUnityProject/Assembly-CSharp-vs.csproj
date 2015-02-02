@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Ball\Controls.cs" />
+     <Compile Include="Assets\Scripts\Main\Entry.cs" />
      <Compile Include="Assets\Scripts\Obstacles\PushBlock.cs" />
      <Compile Include="Assets\Scripts\Room\Room.cs" />
      <Compile Include="Assets\Scripts\Room\Wall.cs" />
