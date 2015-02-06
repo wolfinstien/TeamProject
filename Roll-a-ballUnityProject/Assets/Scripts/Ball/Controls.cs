@@ -1,20 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
-public class Controls : MonoBehaviour {
+public class Controls : MonoBehaviour 
+{
 
-    #region Fields
-
-    private const float FORCE = 120f;
-
-    #endregion
-
-    #region Functions
-
-    // Use this for initialization
+	// Use this for initialization
 	void Start () 
 	{
-        DontDestroyOnLoad(transform.gameObject);
+		Physics.gravity.Set(0.0f,-1000f,0.0f);
 	}
 	
 	// Update is called once per frame
@@ -28,19 +21,19 @@ public class Controls : MonoBehaviour {
          */
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 		{
-			rigidbody.AddForce(Vector3.forward * FORCE);
+			rigidbody.AddForce(Vector3.forward*10);
 		}
 		if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 		{
-            rigidbody.AddForce(Vector3.back * FORCE);
+			rigidbody.AddForce(Vector3.back*10);
 		}
 		if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.LeftArrow))
 		{
-            rigidbody.AddForce(Vector3.left * FORCE);
+			rigidbody.AddForce(Vector3.left*10);
 		}
 		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
-            rigidbody.AddForce(Vector3.right * FORCE);
+			rigidbody.AddForce(Vector3.right*10);
 		}
 
         #endif
@@ -55,10 +48,15 @@ public class Controls : MonoBehaviour {
         if (movement.sqrMagnitude > 1)
             movement.Normalize();
         
-        rigidbody.AddForce(movement * 15f);
+        rigidbody.AddForce(movement * 150f);
 
         #endif
-    }
+	}
 
-    #endregion
+	void OnCollisionEnter()
+	{
+		#if UNITY_ANDROID
+		Handheld.Vibrate ();
+		#endif
+	}
 }
