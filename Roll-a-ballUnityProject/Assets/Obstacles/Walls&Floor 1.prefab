@@ -132,7 +132,7 @@ GameObject:
   - 64: {fileID: 6408408}
   - 23: {fileID: 2308408}
   m_Layer: 0
-  m_Name: FLoorTL
+  m_Name: FloorTL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
