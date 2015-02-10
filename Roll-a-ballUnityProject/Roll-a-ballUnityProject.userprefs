@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Button.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\FirstPush.cs">
     <Files>
-      <File FileName="Assets\Button.cs" Line="33" Column="3" />
+      <File FileName="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\PaddleRightScript.cs" Line="27" Column="40" />
+      <File FileName="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\PaddleLeftScript.cs" Line="46" Column="2" />
+      <File FileName="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\FirstPush.cs" Line="27" Column="65" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
