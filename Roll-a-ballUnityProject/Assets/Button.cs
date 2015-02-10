@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Button : MonoBehaviour 
 {
-	public GameObject door;
+	public GameObject[] door;
 	// Use this for initialization
 	void Start () 
 	{
@@ -17,19 +17,18 @@ public class Button : MonoBehaviour
 
 	}
 
-	void OnCollisionEnter()
+	void OnCollisionEnter(Collision other)
 	{
 		Debug.Log ("button pressed");
 
-		for (int i=0; i<4; i++) 
+		for (int i=0; i<8; i++) 
 		{
-			door = GameObject.Find("Room/Walls&Floor/Wall/Door");
-			Debug.Log(GameObject.Find ("Room/Walls&Floor/Wall/Door").transform.position);
-			Debug.Log(door.transform.position);
-			Vector3 closed = door.transform.position;
+			door = GameObject.FindGameObjectsWithTag("Door");
+			Debug.Log(door[i].transform.position);
+			Vector3 open = door[i].transform.position;
 			//open door
-			closed.y += 3;
-			door.transform.position.Set (closed.x, closed.y, closed.z);
+			open.y += 3;
+			door[i].transform.position = open;//(open.x, open.y, open.z);
 		}
 	}
 }
