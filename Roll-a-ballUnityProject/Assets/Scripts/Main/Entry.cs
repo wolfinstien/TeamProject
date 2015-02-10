@@ -59,26 +59,11 @@ public class Triple<T1, T2, T3> {
         return new Triple<T1, T2, T3>(item1, item2, item3);
     }
 
-//	public static bool operator == (Triple<T1, T2, T3> lhs, Triple<T1, T2, T3> rhs) {
-//		if (System.Object.ReferenceEquals(lhs, rhs)) return true;
-//		if (((object)lhs == null) || ((object)rhs == null)) return false;
-//		return ((object)lhs.Item1 == (object)rhs.Item1 && (object)lhs.Item2 == (object)rhs.Item2 && (object)lhs.Item3 == (object)rhs.Item3);
-//	}
-//
-//	public static bool operator != (Triple<T1, T2, T3> lhs, Triple<T1, T2, T3> rhs) {
-//		return !(lhs == rhs);
-//	}
-//
-//	public override bool Equals (object obj)
-//	{
-//		return (this == (Triple<T1, T2, T3>)obj);
-//	}
-//
-//	public override int GetHashCode ()
-//	{
-//		return base.GetHashCode ();
-//	}
-
+	/// <summary>
+	/// Returns a string that represents the current object.
+	/// </summary>
+	/// <returns>A string that represents the current object.</returns>
+	/// <filterpriority>2</filterpriority>
     public override string ToString() {
         return string.Concat(
             '{', this.Item1.ToString(), ", ", this.Item2.ToString(), ", ", this.Item3.ToString(), '}'); 
