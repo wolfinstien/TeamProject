@@ -1,10 +1,17 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\FirstPush.cs">
     <Files>
       <File FileName="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\PaddleRightScript.cs" Line="27" Column="40" />
       <File FileName="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\PaddleLeftScript.cs" Line="46" Column="2" />
       <File FileName="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\FirstPush.cs" Line="27" Column="65" />
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Main\Entry.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Main\Entry.cs" Line="38" Column="2" />
+>>>>>>> f038f53d91290751da8f9c3ede05695d8a5e583d
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
