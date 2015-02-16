@@ -48,7 +48,7 @@ public class Controls : MonoBehaviour
         if (movement.sqrMagnitude > 1)
             movement.Normalize();
         
-        rigidbody.AddForce(movement * 150f);
+        rigidbody.AddForce(movement * 75f);
 
         #endif
 	}
