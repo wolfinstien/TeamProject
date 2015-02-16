@@ -13,7 +13,7 @@ public class GateScript : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collision other)
+	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Player") {
 			if (this.renderer.material.color == other.gameObject.renderer.material.color) {
