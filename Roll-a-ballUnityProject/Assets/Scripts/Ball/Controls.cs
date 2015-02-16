@@ -53,6 +53,16 @@ public class Controls : MonoBehaviour
         #endif
 	}
 
+	//added by adam
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "Pickup")
+		{
+			this.renderer.material.color = other.renderer.material.color;
+			other.gameObject.SetActive(false);
+		}
+	}
+
 	void OnCollisionEnter(Collision other)
 	{
 		// todo: there is a problem with the relative position where it is taking the 
