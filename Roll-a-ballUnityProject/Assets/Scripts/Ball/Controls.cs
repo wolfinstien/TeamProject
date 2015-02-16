@@ -4,7 +4,6 @@ using System.Collections;
 public class Controls : MonoBehaviour 
 {
 	public float maxSpeed;
-	private bool inAir;
 	private float distToGround;
 
 	// Use this for initialization
@@ -29,18 +28,22 @@ public class Controls : MonoBehaviour
 		{
         	if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 			{
+				Debug.Log("KeyPressed");
 				rigidbody.AddForce(Vector3.forward * maxSpeed);
 			}
 			if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 			{
+				Debug.Log("KeyPressed");
 				rigidbody.AddForce(Vector3.back * maxSpeed);
 			}
 			if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.LeftArrow))
 			{
+				Debug.Log("KeyPressed");
 				rigidbody.AddForce(Vector3.left * maxSpeed);
 			}
 			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 			{
+				Debug.Log("KeyPressed");
 				rigidbody.AddForce(Vector3.right * maxSpeed);
 			}
 		}
@@ -57,21 +60,17 @@ public class Controls : MonoBehaviour
         if (movement.sqrMagnitude > 1)
             movement.Normalize();
         
-<<<<<<< HEAD
-        rigidbody.AddForce(movement * 75f);
-=======
-		if (rigidbody.velocity.magnitude < maxSpeed || inAir)
+		if (rigidbody.velocity.magnitude < maxSpeed || IsGrounded())
 		{
-        	rigidbody.AddForce(movement * 150f);
+        	rigidbody.AddForce(movement * 75f);
 		}
->>>>>>> 4da02f332c8be5f0cb0c52b34913eb8d0b653364
 
         #endif
 	}
 
 	bool IsGrounded()
 	{
-		return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+		return Physics.Raycast(transform.position, -Vector3.up, distToGround);
 	}
 
 	//added by adam
