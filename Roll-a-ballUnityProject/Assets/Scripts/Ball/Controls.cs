@@ -11,6 +11,7 @@ public class Controls : MonoBehaviour
 	void Start () 
 	{
 		//Physics.gravity.Set(0.0f,-1000f,0.0f);
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		distToGround = collider.bounds.extents.y;
 	}
 
