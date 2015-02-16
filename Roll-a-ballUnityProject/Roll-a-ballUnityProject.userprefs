@@ -1,30 +1,6 @@
 ﻿<Properties>
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Obstacles\PushBlock.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Obstacles\PushBlock.cs" Line="56" Column="23" />
-      <File FileName="Assets\Scripts\Obstacles\GateScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Obstacles\ColourChange.cs" Line="1" Column="1" />
-      <File FileName="c:\Users\Adam\Documents\GitHub\TeamProject\Roll-a-ballUnityProject\Assets\Button.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ball\Controls.cs" Line="1" Column="1" />
-=======
-<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\FirstPush.cs">
-    <Files>
-      <File FileName="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\PaddleRightScript.cs" Line="27" Column="40" />
-      <File FileName="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\PaddleLeftScript.cs" Line="46" Column="2" />
-      <File FileName="..\..\..\..\Dropbox\Pixelknot.com\PinBall\Assets\FirstPush.cs" Line="27" Column="65" />
-=======
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Main\Entry.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Main\Entry.cs" Line="38" Column="2" />
->>>>>>> f038f53d91290751da8f9c3ede05695d8a5e583d
->>>>>>> e8161a06557c99624de18d36a97c3994c0c456f8
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -43,18 +43,18 @@ public class PushBlock : MonoBehaviour {
     }*/
 
 	//added by adam
-	void FixedUpdate(Collision other)
+	void FixedUpdate()
 	{
-		float currentPos = this.transform.position.z;
-		if (currentPos < frontLimit && currentPos > backLimit)
-		{
-			this.rigidbody.isKinematic = false;
-		}
-		else
-		{
-			this.rigidbody.isKinematic = true;
-			Debug.Log ("Stop");
-		}
+//		float currentPos = this.transform.position.z;
+//		if (currentPos < frontLimit && currentPos > backLimit)
+//		{
+//			this.rigidbody.isKinematic = false;
+//		}
+//		else
+//		{
+//			this.rigidbody.isKinematic = true;
+//			Debug.Log ("Stop");
+//		}
 	}
 
 	/*void OnCollisionEnter(Collision other) {
