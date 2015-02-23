@@ -87,7 +87,7 @@ public class Controls : MonoBehaviour
 		//sometimes it triggers above and sometimes not depending on which way up the sphere is.
 
 		Vector3 contactPoint = other.contacts[0].point;
-		var relativePosition = transform.InverseTransformPoint(contactPoint);
+		Vector3 relativePosition = transform.InverseTransformPoint(contactPoint);
 		//Debug.Log ("CP= " + contactPoint + " RP= " + relativePosition);
 
 		// dont want to colide with objects we are rollling on
