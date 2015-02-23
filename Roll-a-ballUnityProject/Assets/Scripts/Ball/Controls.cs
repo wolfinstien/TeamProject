@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Controls : MonoBehaviour 
 {
+	public float currentSpeed;
 	public float maxSpeed;
-	private bool inAir;
 	private float distToGround;
 
 	// Use this for initialization
@@ -13,55 +13,55 @@ public class Controls : MonoBehaviour
 		//Physics.gravity.Set(0.0f,-1000f,0.0f);
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		distToGround = collider.bounds.extents.y;
+		maxSpeed = 75f;
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
+		currentSpeed = rigidbody.velocity.magnitude;
+
+		if (!IsGrounded ())
+						Debug.Log ("in air");
 
         #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
-
         /* 
          * Check for player keyboard input and move ball accordingly
          */
-
 		if (rigidbody.velocity.magnitude < maxSpeed && IsGrounded())
 		{
         	if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 			{
-				rigidbody.AddForce(Vector3.forward * maxSpeed);
+				rigidbody.AddForce(Vector3.forward * 10.0f);
 			}
 			if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 			{
-				rigidbody.AddForce(Vector3.back * maxSpeed);
+				rigidbody.AddForce(Vector3.back * 10.0f);
 			}
 			if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.LeftArrow))
 			{
-				rigidbody.AddForce(Vector3.left * maxSpeed);
+				rigidbody.AddForce(Vector3.left * 10.0f);
 			}
 			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 			{
-				rigidbody.AddForce(Vector3.right * maxSpeed);
+				rigidbody.AddForce(Vector3.right * 10.0f);
 			}
 		}
-
         #endif
 
         #if UNITY_ANDROID
-
         /*
          * Move ball based on accelerometer values
          */
         Vector3 movement = new Vector3(Input.acceleration.x, 0f, Input.acceleration.y); //-y
 
-        if (movement.sqrMagnitude > 1)
-            movement.Normalize();
+//        if (movement.sqrMagnitude > 1)
+//            movement.Normalize();
         
-		if (rigidbody.velocity.magnitude < maxSpeed || inAir)
+		if (rigidbody.velocity.magnitude < maxSpeed && IsGrounded())
 		{
-        	rigidbody.AddForce(movement * 150f);
+        	rigidbody.AddForce(movement * 50f);
 		}
-
         #endif
 	}
 
