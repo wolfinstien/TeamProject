@@ -10,15 +10,15 @@ public class ColourChange : MonoBehaviour {
 		switch (colour)
 		{
 		case "Red":
-			this.renderer.material.color = Color.red;
+			this.GetComponent<Renderer>().material.color = Color.red;
 			break;
 
 		case "Blue":
-			this.renderer.material.color = Color.blue;
+			this.GetComponent<Renderer>().material.color = Color.blue;
 			break;
 
 		case "Green":
-			this.renderer.material.color = Color.green;
+			this.GetComponent<Renderer>().material.color = Color.green;
 			break;
 		}
 	}
