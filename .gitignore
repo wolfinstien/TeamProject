@@ -10,7 +10,6 @@ Library/
 ExportedObj/
 obj/
 *.svd
-*.userprefs
 /*.csproj
 *.pidb
 *.suo
@@ -29,3 +28,10 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# ================ #
+# Irritating Stuff #
+# ================ #
+*.blend
+*.blend1
+*.mtl

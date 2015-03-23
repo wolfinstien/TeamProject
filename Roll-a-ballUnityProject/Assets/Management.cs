@@ -34,7 +34,7 @@ public class Management : MonoBehaviour
 			{
 				Vector3 open = door.transform.position;
 				open.y += 3;
-				door.transform.position += open;
+				door.transform.position = open;
 			}
 		}
 	}

@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum SuperCubeState {
+public enum SuperCubeState 
+{
     Switching,
     Still
 }
 
-public enum SwitchPhase {
+public enum SwitchPhase 
+{
     Initial,
     Next,
     Final
@@ -16,27 +18,31 @@ public enum SwitchPhase {
 /*
  * Quick and dirty class that holds a triple of any type.
  */
-public class Triple<T1, T2, T3> {
-
+public class Triple<T1, T2, T3> 
+{
     private T1 m_a;
     private T2 m_b;
     private T3 m_c;
 
-    protected Triple(T1 a, T2 b, T3 c) {
+    protected Triple(T1 a, T2 b, T3 c) 
+	{
         this.m_a = a;
         this.m_b = b;
         this.m_c = c;
     }
 
-    public T1 Item1 {
+    public T1 Item1 
+	{
         get { return this.m_a; }
     }
 
-    public T2 Item2 {
+    public T2 Item2 
+	{
         get { return this.m_b; }
     }
 
-    public T3 Item3 {
+    public T3 Item3 
+	{
         get { return this.m_c; }
     }
 
@@ -55,7 +61,8 @@ public class Triple<T1, T2, T3> {
     /// <returns>
     /// A new instance of Triple.
     /// </returns>
-    public static Triple<T1, T2, T3> Create(T1 item1, T2 item2, T3 item3) {
+    public static Triple<T1, T2, T3> Create(T1 item1, T2 item2, T3 item3) 
+	{
         return new Triple<T1, T2, T3>(item1, item2, item3);
     }
 
@@ -64,21 +71,21 @@ public class Triple<T1, T2, T3> {
     /// </summary>
     /// <returns>A string that represents the current object.</returns>
     /// <filterpriority>2</filterpriority>
-    public override string ToString() {
-        return string.Concat(
-            '{', this.Item1.ToString(), ", ", this.Item2.ToString(), ", ", this.Item3.ToString(), '}');
+    public override string ToString() 
+	{
+        return string.Concat('{', this.Item1.ToString(), ", ", this.Item2.ToString(), ", ", this.Item3.ToString(), '}');
     }
 }
 
 /*
  * Scene starts from this class.
  */
-public class Entry : MonoBehaviour {
-
+public class CubeMatrix : MonoBehaviour 
+{ 
     // Positioning Parameters
-    private const float STEP_X = 20f,
-                        STEP_Y = 5f,
-                        SWITCH_SPEED = 12f;
+	private const float STEP_HRZNTL = 20f;
+	private const float STEP_VRTCL = 20f;
+	private const float SWITCH_SPEED = 12f;
 
     // References to the cubling prefabs
     public GameObject Room0, Room1, Room2, Room3, Room4, Room5, Room6, Room7, Room8, Room9,
@@ -86,7 +93,9 @@ public class Entry : MonoBehaviour {
                      Room19, Room20, Room21, Room22, Room23, Room24, Room25;
 
     public GameObject m_switcher;
-    private Vector3 m_centralVector, m_lastPosition, m_targetPosition;
+	private Vector3 m_centralVector;
+	private Vector3 m_lastPosition;
+	private Vector3 m_targetPosition;
     private Triple<int, int, int> m_lastLocation;
 
     // Multidimensional array to hold each cubling
@@ -99,7 +108,8 @@ public class Entry : MonoBehaviour {
     private int m_switchCounter;
 
     // Use this for initialization
-    void Start() {
+    void Start() 
+	{
 
         m_scState = SuperCubeState.Still;
         m_switchCounter = 0;
@@ -143,27 +153,27 @@ public class Entry : MonoBehaviour {
         m_cublings[2, 2, 2] = Room25;     // End Room
 
         // Instantiate all the cubling prefabs
-        for (int y = 0; y < 3; ++y) {
-            for (int z = 0; z < 3; ++z) {
-                for (int x = 0; x < 3; ++x) {
-                    if (m_cublings[x, y, z] != null) {
-                        m_cublings[x, y, z] =
-                            (GameObject)Instantiate(
-                                m_cublings[x, y, z],
-                                new Vector3(x * STEP_X, y * STEP_Y, z * STEP_X),
-                                Quaternion.identity);
+        for (int y = 0; y < 3; ++y) 
+		{
+            for (int z = 0; z < 3; ++z) 
+			{
+                for (int x = 0; x < 3; ++x) 
+				{
+                    if (m_cublings[x, y, z] != null) 
+					{
+						m_cublings[x, y, z] = (GameObject)Instantiate(m_cublings[x, y, z], new Vector3(x * STEP_HRZNTL, y * STEP_VRTCL, z * STEP_HRZNTL), Quaternion.identity);
                     }
                 }
             }
         }
-
         m_centralVector = GetCublingVector(1, 1, 1);
     }
 
     /// <summary>
     /// Updates this instance.
     /// </summary>
-    void Update() {
+    void Update() 
+	{
         /***** DEBUG: PERFORM SWITCH *****/
         if (Input.GetKeyDown(KeyCode.S)) {
             StartShift();
@@ -173,11 +183,11 @@ public class Entry : MonoBehaviour {
     /// <summary>
     /// Called to the fixed frame rate.
     /// </summary>
-    void FixedUpdate() {
-        if (m_scState.Equals(SuperCubeState.Switching)) {
-
-            m_switcher.transform.position = Vector3.MoveTowards(
-                m_switcher.transform.position, m_targetPosition, (SWITCH_SPEED * Time.deltaTime));
+    void FixedUpdate() 
+	{
+        if (m_scState.Equals(SuperCubeState.Switching)) 
+		{
+            m_switcher.transform.position = Vector3.MoveTowards(m_switcher.transform.position, m_targetPosition, (SWITCH_SPEED * Time.deltaTime));
 
             if (m_switcher.transform.position == m_targetPosition)
                 Next();
@@ -187,7 +197,8 @@ public class Entry : MonoBehaviour {
     /// <summary>
     /// Starts the shift.
     /// </summary>
-    public void StartShift() {
+    public void StartShift()
+	{
         m_scState = SuperCubeState.Switching;
         m_phase = SwitchPhase.Initial;
         CubeSwitch();
@@ -208,8 +219,9 @@ public class Entry : MonoBehaviour {
     /// <returns>
     /// An instance of Vector3.
     /// </returns>
-    private Vector3 GetCublingVector(int x, int y, int z) {
-        return new Vector3(x * STEP_X, y * STEP_Y, z * STEP_X);
+    private Vector3 GetCublingVector(int x, int y, int z) 
+	{
+        return new Vector3(x * STEP_HRZNTL, y * STEP_VRTCL, z * STEP_HRZNTL);
     }
 
     /// <summary>
@@ -221,22 +233,24 @@ public class Entry : MonoBehaviour {
     /// <returns>
     /// A tuple of integers.
     /// </returns>
-    private Triple<int, int, int> GetCublingLocation(Vector3 position) {
-        return Triple<int, int, int>.Create(
-            (int)(position.x % (STEP_X - 1f)), (int)(position.y % (STEP_Y - 1f)), (int)(position.z % (STEP_X - 1f)));
+    private Triple<int, int, int> GetCublingLocation(Vector3 position) 
+	{
+        return Triple<int, int, int>.Create((int)(position.x % (STEP_HRZNTL - 1f)), (int)(position.y % (STEP_VRTCL - 1f)), (int)(position.z % (STEP_HRZNTL - 1f)));
     }
 
     /// <summary>
     /// Changes to the next stage in the switch.
     /// </summary>
-    private void Next() {
+    private void Next() 
+	{
         // Make sure the array matches the current supercube configuration
         Triple<int, int, int> newLocation = GetCublingLocation(m_switcher.transform.position);
         m_cublings[newLocation.Item1, newLocation.Item2, newLocation.Item3] = m_switcher;
 
         if (m_phase.Equals(SwitchPhase.Initial)) m_phase = SwitchPhase.Next;
 
-        if (m_phase.Equals(SwitchPhase.Final)) {
+        if (m_phase.Equals(SwitchPhase.Final)) 
+		{
             m_switchCounter = 0;
             m_scState = SuperCubeState.Still;
             m_switcher = null;
@@ -248,24 +262,26 @@ public class Entry : MonoBehaviour {
     /// <summary>
     /// Determines which cube in the matrix will be switching.
     /// </summary>
-    private void CubeSwitch() {
-
-        if (m_phase.Equals(SwitchPhase.Initial)) {
-            List<GameObject> centrals = new List<GameObject>() { 
-				m_cublings[1, 0, 1],
-				m_cublings[1, 1, 0],
-				m_cublings[0, 1, 1],
-				m_cublings[2, 1, 1],
-				m_cublings[1, 1, 2],
-				m_cublings[1, 2, 1]
-			};
+    private void CubeSwitch() 
+	{
+		Debug.Log ("cube switch");
+        if (m_phase.Equals(SwitchPhase.Initial)) 
+		{
+            List<GameObject> centrals = new List<GameObject>() {m_cublings[1, 0, 1],
+																m_cublings[1, 1, 0],
+																m_cublings[0, 1, 1],
+																m_cublings[2, 1, 1],
+																m_cublings[1, 1, 2],
+																m_cublings[1, 2, 1]
+																};
 
             System.Random r = new System.Random();
             m_switcher = centrals[r.Next(0, centrals.Count)];
             m_targetPosition = m_centralVector;
         }
 
-        if (m_phase.Equals(SwitchPhase.Next)) {
+        if (m_phase.Equals(SwitchPhase.Next)) 
+		{
             bool useCentral = (m_switchCounter >= 3);
             Triple<int, int, int> nextLocation = GetRandomLocation(useCentral);
             m_switcher = m_cublings[nextLocation.Item1, nextLocation.Item2, nextLocation.Item3];
@@ -286,7 +302,8 @@ public class Entry : MonoBehaviour {
     /// </summary>
     /// <returns>A Triple of integers representing a random location.</returns>
     /// <param name="enableCentral">If set to <c>true</c> enable the central cube.</param>
-    private Triple<int, int, int> GetRandomLocation(bool enableCentral) {
+    private Triple<int, int, int> GetRandomLocation(bool enableCentral) 
+	{
         System.Random r = new System.Random();
 
         m_lastLocation = GetCublingLocation(m_lastPosition);
@@ -298,7 +315,8 @@ public class Entry : MonoBehaviour {
         // First lets determine whether we are to add or subtract
         bool isAdd = (r.Next(0, 2) % 2 == 1);
         // Now pick a random axis to modify
-        switch (r.Next(0, 3)) {
+        switch (r.Next(0, 3)) 
+		{
             case 0:
                 location = (isAdd) ?
                     Triple<int, int, int>.Create((m_lastLocation.Item1 + 1), m_lastLocation.Item2, m_lastLocation.Item3) :
@@ -320,7 +338,10 @@ public class Entry : MonoBehaviour {
 
         // Run function recursively if we meet the following conditions...
         if ((!enableCentral && IsSameLocation(location, central)) ||
-            IsSameLocation(location, start) || IsSameLocation(location, end) || OutOfBounds(location)) {
+            IsSameLocation(location, start) || 
+		    IsSameLocation(location, end) || 
+		    OutOfBounds(location)) 
+		{
             location = GetRandomLocation(enableCentral);
         }
 
@@ -333,7 +354,8 @@ public class Entry : MonoBehaviour {
     /// <returns><c>true</c> if both locations are the same otherwise, <c>false</c>.</returns>
     /// <param name="lhs">Left hand side Triple..</param>
     /// <param name="rhs">Right hand side Triple.</param>
-    private bool IsSameLocation(Triple<int, int, int> lhs, Triple<int, int, int> rhs) {
+    private bool IsSameLocation(Triple<int, int, int> lhs, Triple<int, int, int> rhs) 
+	{
         return (lhs.Item1.Equals(rhs.Item1) && lhs.Item2.Equals(rhs.Item2) && lhs.Item3.Equals(rhs.Item3));
     }
 
@@ -342,7 +364,8 @@ public class Entry : MonoBehaviour {
     /// </summary>
     /// <returns><c>true</c>, if location exceeds any of the boundaries, <c>false</c> otherwise.</returns>
     /// <param name="location">Represetns the location of the cube.</param>
-    private bool OutOfBounds(Triple<int, int, int> location) {
+    private bool OutOfBounds(Triple<int, int, int> location) 
+	{
         return (location.Item1 < 0 || location.Item1 > 2 ||
                 location.Item2 < 0 || location.Item2 > 2 ||
                 location.Item3 < 0 || location.Item3 > 2);
