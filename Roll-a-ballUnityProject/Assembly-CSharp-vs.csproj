@@ -46,11 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Bounce.cs" />
      <Compile Include="Assets\Management.cs" />
      <Compile Include="Assets\MoveCamera.cs" />
      <Compile Include="Assets\Scripts\Ball\Controls.cs" />
      <Compile Include="Assets\Scripts\Button.cs" />
-     <Compile Include="Assets\Scripts\Main\Entry.cs" />
+     <Compile Include="Assets\Scripts\Main\CubeMatrix.cs" />
      <Compile Include="Assets\Scripts\Obstacles\ColourChange.cs" />
      <Compile Include="Assets\Scripts\Obstacles\GateScript.cs" />
      <Compile Include="Assets\Scripts\Obstacles\PushBlock.cs" />

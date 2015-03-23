@@ -264,6 +264,7 @@ public class CubeMatrix : MonoBehaviour
     /// </summary>
     private void CubeSwitch() 
 	{
+		Debug.Log ("cube switch");
         if (m_phase.Equals(SwitchPhase.Initial)) 
 		{
             List<GameObject> centrals = new List<GameObject>() {m_cublings[1, 0, 1],
