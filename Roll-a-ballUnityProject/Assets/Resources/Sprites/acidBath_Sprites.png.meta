@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1d15b5d671dd21948a6e04833b6bda39
-timeCreated: 1426170954
+timeCreated: 1429097927
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,7 @@ TextureImporter:
     21300006: acidBath_Sprites_3
     21300008: acidBath_Sprites_4
     21300010: acidBath_Sprites_5
+    21300012: acidBath_Sprites_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,9 +60,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 65
-        height: 65
+        y: 1
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -69,9 +70,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 65
-        y: 0
-        width: 65
-        height: 65
+        y: 1
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -79,9 +80,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 130
-        y: 0
-        width: 65
-        height: 65
+        y: 1
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -89,9 +90,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 195
-        y: 0
-        width: 65
-        height: 65
+        y: 1
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,9 +100,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 260
-        y: 0
-        width: 65
-        height: 65
+        y: 1
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -109,11 +110,21 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 325
-        y: 0
-        width: 65
-        height: 65
+        y: 1
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: acidBath_Sprites_6
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 1
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
