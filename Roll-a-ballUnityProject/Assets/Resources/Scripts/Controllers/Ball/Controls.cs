@@ -3,7 +3,8 @@ using System.Collections;
 
 #region Enumerators
 
-public enum Relativity { 
+public enum Relativity
+{ 
     Ground = 1,
     Wall = Ground << 1,
     Ceiling = Ground << 2,
@@ -12,8 +13,8 @@ public enum Relativity {
 
 #endregion
 
-public class Controls : MonoBehaviour {
-    
+public class Controls : MonoBehaviour 
+{
     #region Members
 
     public float currentSpeed;
@@ -39,27 +40,33 @@ public class Controls : MonoBehaviour {
      * Listeners
      */
 
-    public void Set_BallRelativity(Relativity r) {
+    public void Set_BallRelativity(Relativity r) 
+    {
         BallRelativity = r;
     }
 
-    public void Set_WallDirection(Vector3 v) {
+    public void Set_WallDirection(Vector3 v) 
+    {
         WallDirectional = v;
     }
 
-    public void Set_PreviousRoom(string pr) {
+    public void Set_PreviousRoom(string pr) 
+    {
         PreviousRoom = pr;
     }
 
-    public void Set_CurrentRoom(string cr) {
+    public void Set_CurrentRoom(string cr) 
+    {
         CurrentRoom = cr;
     }
 
-    public void Set_BallColour(Color color) {
+    public void Set_BallColour(Color color) 
+    {
         this.GetComponent<Renderer>().material.color = color;
     }
 
-    public void Rescale() {
+    public void Rescale() 
+    {
         this.transform.localScale = Vector3.one;
         GetComponent<ParticleSystem>().enableEmission = false;
     }
@@ -135,9 +142,13 @@ public class Controls : MonoBehaviour {
                     if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.LeftArrow)) 
                     {
                         if (BallRelativity.Equals(Relativity.Wall))
+                        {
                             GetComponent<Rigidbody>().AddForce(Vector3.up * (maxSpeed * 0.5f));
+                        }
                         else
+                        {
                             GetComponent<Rigidbody>().AddForce(Vector3.left * maxSpeed);
+                        }
                     }
                     if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) 
                     {
@@ -154,7 +165,9 @@ public class Controls : MonoBehaviour {
             Vector3 movement = new Vector3(Input.acceleration.x, 0f, Input.acceleration.y); //-y
 
             if (movement.sqrMagnitude > 1)
-               movement.Normalize();
+            {
+                movement.Normalize();
+            }
         
 		    if (GetComponent<Rigidbody>().velocity.magnitude < maxSpeed && isGrounded())
 		    {
@@ -164,8 +177,10 @@ public class Controls : MonoBehaviour {
         }
 	}
 
-    void FixedUpdate() {
-        switch (BallRelativity) { 
+    void FixedUpdate() 
+    {
+        switch (BallRelativity) 
+        { 
             case Relativity.Ground:
                 // Simulates normal gravity
                 GetComponent<Rigidbody>().AddForce(-Vector3.up * Physics.gravity.magnitude);
@@ -219,9 +234,7 @@ public class Controls : MonoBehaviour {
 #endif
         }
     }
-
     #endregion
 }
-
 
 // END OF FILE
