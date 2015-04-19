@@ -76,6 +76,7 @@
     <Compile Include="Assets\Resources\Scripts\Tools\Map.cs" />
     <Compile Include="Assets\Resources\Scripts\Tools\MeshParticleRenderer.cs" />
     <Compile Include="Assets\Resources\Scripts\Traps\AcidBath.cs" />
+    <Compile Include="Assets\Teleport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
