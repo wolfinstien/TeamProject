@@ -16,10 +16,12 @@ public class TimedButon : MonoBehaviour {
 
 	private bool active;
 	private int count;
+	private Animator timer;
 
 	// Use this for initialization
 	void Start () {
 		active = false;
+		timer = this.gameObject.transform.GetChild (0).gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -36,6 +38,7 @@ public class TimedButon : MonoBehaviour {
 				if (type == Affect.RotateCont)
 				{
 					objToAffect.transform.RotateAround(objToAffect.transform.position, new Vector3(0.0f, 1.0f, 0.0f), 1.0f);
+					print ("rotate: " + count + " degrees");
 				}
 			}
 		}
@@ -44,6 +47,8 @@ public class TimedButon : MonoBehaviour {
 	void Activate()
 	{
 		active = true;
+		timer.Play("Timer");
+		timer.speed = 1.0f / duration;
 		switch (type)
 		{
 		case Affect.Kinematic:
@@ -58,6 +63,8 @@ public class TimedButon : MonoBehaviour {
 	void Deactivate()
 	{
 		active = false;
+		timer.Play("Stop");
+		count = 0;
 		switch (type)
 		{
 		case Affect.Kinematic:
