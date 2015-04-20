@@ -7,7 +7,7 @@ public class EnterRoom : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<Controls>().currentestRoom = this.gameObject;
+            other.gameObject.GetComponent<SpawnPoint>().roomInsideOf = this.gameObject;
         }
     }
 }

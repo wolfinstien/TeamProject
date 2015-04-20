@@ -43,7 +43,8 @@ public class AcidBath : MonoBehaviour {
             if (m_respawnTimer.ElapsedMilliseconds >= m_delay) {
                 // Reset the timer, respawn and rescale the player
                 m_respawnTimer.Reset();
-                GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnPoint>().Respawn();
+                //GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnPoint>().Respawn();
+                GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnPoint>().ReviveMe();
                 GameObject.FindGameObjectWithTag("Player").SendMessage("Rescale");
                 foreach (var c in DoorTrigger.ColorLookUp) {
                     if (GameObject.FindGameObjectWithTag("Player").GetComponent<Renderer>().material.color.Equals(c.color))

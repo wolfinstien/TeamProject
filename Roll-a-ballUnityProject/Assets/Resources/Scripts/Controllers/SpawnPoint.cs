@@ -45,7 +45,8 @@ public class SpawnPoint : MonoBehaviour
     public string actorTag;
     public Vector3 spawnLocation;
     public List<Map> nodes;
-   
+
+    public GameObject roomInsideOf;
     public string currentRoom;
 
     #endregion
@@ -142,6 +143,12 @@ public class SpawnPoint : MonoBehaviour
     public GameObject GetActor() 
     {
         return actor;
+    }
+
+    public void ReviveMe()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = roomInsideOf.transform.FindChild("SpawnPoint").transform.position;
     }
 
     public void Respawn() 
