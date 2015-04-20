@@ -22,7 +22,6 @@ public class Controls : MonoBehaviour
 	private float distToGround;
     private AudioSource m_impactSfx, m_pickUpSfx;
     public AudioClip[] collisionSounds;
-    public GameObject currentestRoom;
 
     #endregion
 

@@ -91,13 +91,14 @@ public class CubeMatrix : MonoBehaviour
                         SWITCH_SPEED = 12f;
 
     // References to the cubling prefabs
-    public GameObject Room0, Room1, Room2, Room3, Room4, Room5, Room6, Room7, Room8, Room9,
-                     Room10, Room11, Room12, Room13, Room14, Room15, Room16, Room17, Room18,
-                     Room19, Room20, Room21, Room22, Room23, Room24, Room25;
+    //public GameObject Room0, Room1, Room2, Room3, Room4, Room5, Room6, Room7, Room8, Room9,
+    //                 Room10, Room11, Room12, Room13, Room14, Room15, Room16, Room17, Room18,
+    //                 Room19, Room20, Room21, Room22, Room23, Room24, Room25;
 
-    public GameObject[]   Rooms;
-    public GameObject   StartRoom;
-    public GameObject   EndRoom;
+    public GameObject[] Rooms;
+    public GameObject StartRoom;
+    public GameObject EndRoom;
+    public GameObject teleport;
 
     public GameObject m_switcher;
     private Vector3 m_centralVector, m_lastPosition, m_targetPosition;
@@ -133,39 +134,6 @@ public class CubeMatrix : MonoBehaviour
          * Instantiate & fill array
          */
         m_cublings = new GameObject[3, 3, 3];
-
-        //// Bottom Layer
-        //m_cublings[0, 0, 0] = Room0;      // Start Room
-        //m_cublings[1, 0, 0] = Room1;
-        //m_cublings[2, 0, 0] = Room2;
-        //m_cublings[0, 0, 1] = Room3;
-        //m_cublings[1, 0, 1] = Room4;
-        //m_cublings[2, 0, 1] = Room5;
-        //m_cublings[0, 0, 2] = Room6;
-        //m_cublings[1, 0, 2] = Room7;
-        //m_cublings[2, 0, 2] = Room8;
-
-        //// Middle Layer
-        //m_cublings[0, 1, 0] = Room9;
-        //m_cublings[1, 1, 0] = Room10;
-        //m_cublings[2, 1, 0] = Room11;
-        //m_cublings[0, 1, 1] = Room12;
-        //m_cublings[1, 1, 1] = null;       // Centre Room: left empty for switching
-        //m_cublings[2, 1, 1] = Room13;
-        //m_cublings[0, 1, 2] = Room14;
-        //m_cublings[1, 1, 2] = Room15;
-        //m_cublings[2, 1, 2] = Room16;
-
-        //// Top Layer
-        //m_cublings[0, 2, 0] = Room17;
-        //m_cublings[1, 2, 0] = Room18;
-        //m_cublings[2, 2, 0] = Room19;
-        //m_cublings[0, 2, 1] = Room20;
-        //m_cublings[1, 2, 1] = Room21;
-        //m_cublings[2, 2, 1] = Room22;
-        //m_cublings[0, 2, 2] = Room23;
-        //m_cublings[1, 2, 2] = Room24;
-        //m_cublings[2, 2, 2] = Room25;     // End Room
 
         // shuffle up rooms
         for (int i = 0; i < Rooms.Length; i++)
@@ -215,6 +183,10 @@ public class CubeMatrix : MonoBehaviour
             }
         }
         m_centralVector = GetCublingVector(1, 1, 1);
+
+        // place teleports
+        GameObject.Instantiate(teleport, GameObject.Find(Rooms[7].name+"(Clone)").transform.FindChild("ExitButton").position + new Vector3(0.0f,0.5f,0.0f), Quaternion.identity);
+        GameObject.Instantiate(teleport, GameObject.Find(Rooms[16].name+"(Clone)").transform.FindChild("ExitButton").position + new Vector3(0.0f,0.5f,0.0f), Quaternion.identity);
     }
 
     /// <summary>

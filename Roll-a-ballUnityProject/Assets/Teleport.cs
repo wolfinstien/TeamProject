@@ -4,8 +4,8 @@ using System.Collections;
 public class Teleport : MonoBehaviour
 {
     public int level;
-    public bool shrink = false;
-    public GameObject player;
+    bool shrink = false;
+    GameObject player;
 
     void OnTriggerEnter(Collider other)
     {
@@ -22,6 +22,15 @@ public class Teleport : MonoBehaviour
         else
         {
             // move player to room above
+            RaycastHit rayhitresults;
+            if (Physics.Raycast(new Ray(GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnPoint>().roomInsideOf.transform.position,Vector3.up),out rayhitresults))
+            {
+                if (rayhitresults.transform.gameObject.name.Contains("Room"))
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnPoint>().roomInsideOf = rayhitresults.transform.gameObject;//TODO:: find the room above current
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnPoint>().ReviveMe();
+                }
+            }
         }
     }
 
