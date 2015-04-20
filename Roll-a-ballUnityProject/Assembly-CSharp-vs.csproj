@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EnterRoom.cs" />
      <Compile Include="Assets\RampForce.cs" />
      <Compile Include="Assets\Resources\FixedFollow.cs" />
      <Compile Include="Assets\Resources\OpenGate.cs" />

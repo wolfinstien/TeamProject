@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Teleport : MonoBehaviour
 {
-    public string level;
+    public int level;
     public bool shrink = false;
     public GameObject player;
 
@@ -15,15 +15,30 @@ public class Teleport : MonoBehaviour
 
     void Warp()
     {
-
+        if (level!=-1)
+        {
+            Application.LoadLevel(level);
+        }
+        else
+        {
+            // move player to room above
+        }
     }
 
     void Update()
     {
-        if(shrink && (player.transform.localScale.x>0.1))
+        if (player != null)
         {
-            float newScale = Mathf.Lerp(0.1f, 1.0f, Time.deltaTime/1000);
-            player.transform.localScale = new Vector3(newScale, newScale, newScale);
+            if (shrink && (player.transform.localScale.x > 0.1))
+            {
+                //float newScale = Mathf.Lerp(1.0f, 0.1f, Time.deltaTime);
+                player.transform.localScale -= new Vector3(0.05f, 0.05f, 0.05f);
+            }
+
+            if (player.transform.localScale.x > 0.1)
+            {
+                Warp();
+            }
         }
     }
 }
