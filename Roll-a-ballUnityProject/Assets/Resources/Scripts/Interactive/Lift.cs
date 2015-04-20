@@ -8,7 +8,8 @@ using System.Diagnostics;
 
 #region Enumerators
 
-public enum LiftState { 
+public enum LiftState 
+{ 
     Idle = 0,
     Up = 1,
     AtTop = Up << 1,
@@ -20,12 +21,12 @@ public enum LiftState {
 
 #region Objects
 
-public class Lift : MonoBehaviour {
-
+public class Lift : MonoBehaviour 
+{
     #region Members
 
     public long delay;
-    public float top, bottom, speed;
+    public float top, bottom, speed, relativeTop, RelativeBottom;
 
     /*
      * NOTE:
@@ -43,18 +44,23 @@ public class Lift : MonoBehaviour {
     #region Functions
 
     // Called on Script creation - Init
-    void Awake() {
+    void Awake() 
+    {
         m_liftState = LiftState.Idle;
         this.transform.FindChild("Spotlight").gameObject.GetComponent<Light>().enabled = lightOn;
     }
 
     // Called on runtime, and the object is enabled - Init
-	void Start () {
+	void Start () 
+    {
         m_timer = new Stopwatch();
+        top = this.transform.position.y + relativeTop;
+        bottom = this.transform.position.y + RelativeBottom;
 	}
 
 	// Update is called once per frame
-    void Update() {
+    void Update() 
+    {
         this.transform.FindChild("Spotlight").gameObject.GetComponent<Light>().enabled = lightOn;
     }
 
@@ -62,73 +68,88 @@ public class Lift : MonoBehaviour {
      * FixedUpdate gets called relative to the current framerate, 
      * best for physics, translations, etc..
      */
-    void FixedUpdate() {
-        if (m_liftState.Equals(LiftState.Idle) && this.transform.position.y > bottom && lightOn) {
+    void FixedUpdate() 
+    {
+        if (m_liftState.Equals(LiftState.Idle) && this.transform.position.y > bottom && lightOn) 
+        {
             this.transform.Translate(Vector3.down * (Time.deltaTime * speed), Space.World);
         }
 
-        if (this.transform.position.y <= bottom) {
-            this.transform.position = new Vector3(
-                this.transform.position.x, bottom, this.transform.position.z);
+        if (this.transform.position.y <= bottom) 
+        {
+            this.transform.position = new Vector3(this.transform.position.x, bottom, this.transform.position.z);
         }
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag.Equals("Player") && lightOn) {
+    void OnTriggerEnter(Collider other) 
+    {
+        if (other.gameObject.tag.Equals("Player") && lightOn) 
+        {
             if (m_timer.IsRunning)
+            {
                 m_timer.Reset();
+            }
             m_timer.Start();
         }
     }
 
-    void OnTriggerStay(Collider other) {
-        if (other.gameObject.tag.Equals("Player")) {
-            if (m_timer.ElapsedMilliseconds >= delay && lightOn) {
+    void OnTriggerStay(Collider other) 
+    {
+        if (other.gameObject.tag.Equals("Player")) 
+        {
+            if (m_timer.ElapsedMilliseconds >= delay && lightOn) 
+            {
                 delay = 0;
 
-                if (m_liftState.Equals(LiftState.Idle)) {
+                if (m_liftState.Equals(LiftState.Idle)) 
+                {
                     m_liftState = LiftState.Up;
                     this.GetComponent<AudioSource>().Play();
                 }
 
-                if (this.transform.position.y >= top) {
+                if (this.transform.position.y >= top) 
+                {
                     m_liftState = LiftState.AtTop;
                 }
 
-                if (m_liftState.Equals(LiftState.AtTop)) {
+                if (m_liftState.Equals(LiftState.AtTop)) 
+                {
                     m_timer.Reset();
                     m_liftState = LiftState.DropDelay;
                 }
 
-                if (m_liftState.Equals(LiftState.DropDelay)) {
+                if (m_liftState.Equals(LiftState.DropDelay)) 
+                {
                     delay = 2000;
                     m_liftState = LiftState.Down;
                     m_timer.Start();
                 }
 
-                if (m_liftState.Equals(LiftState.Up) && this.transform.position.y < top) {
+                if (m_liftState.Equals(LiftState.Up) && this.transform.position.y < top) 
+                {
                     this.transform.Translate(Vector3.up * (Time.deltaTime * speed), Space.World);
                 }
 
-                if (m_liftState.Equals(LiftState.Down) && this.transform.position.y > bottom) {
+                if (m_liftState.Equals(LiftState.Down) && this.transform.position.y > bottom) 
+                {
                     this.transform.Translate(Vector3.down * (Time.deltaTime * speed), Space.World);
                 }
             }
         }
     }
 
-    void OnTriggerExit(Collider other) {
+    void OnTriggerExit(Collider other) 
+    {
         if (this.GetComponent<AudioSource>().isPlaying)
+        {
             this.GetComponent<AudioSource>().Stop();
+        }
         m_liftState = LiftState.Idle;
         delay = 750;
         m_timer.Reset();
     }
-
     #endregion
-
 }
-
 #endregion
 
 // END OF FILE

@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EnterRoom.cs" />
      <Compile Include="Assets\RampForce.cs" />
      <Compile Include="Assets\Resources\FixedFollow.cs" />
      <Compile Include="Assets\Resources\OpenGate.cs" />
@@ -70,6 +71,7 @@
      <Compile Include="Assets\Resources\Scripts\Tools\Map.cs" />
      <Compile Include="Assets\Resources\Scripts\Tools\MeshParticleRenderer.cs" />
      <Compile Include="Assets\Resources\Scripts\Traps\AcidBath.cs" />
+     <Compile Include="Assets\Teleport.cs" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
